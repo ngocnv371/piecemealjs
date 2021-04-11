@@ -9,7 +9,7 @@
 import { IterableBase } from './IterableBase';
 import { ListIterator } from './ListIterator';
 import { Rect } from './rect';
-import { createArray, fillArray } from './utils';
+import { createArray, fillArray, iterate } from './utils';
 import { Vec } from './vec';
 
 /// order.
@@ -83,11 +83,9 @@ export class Array2D<T> extends IterableBase<T> {
   /// Evaluates [generator] on each position in the array and sets the element
   /// at that position to the result.
   generate(generator: (v: Vec) => T) {
-    const it = this.bounds.iterator;
-    do {
-      const pos = it.current();
+    iterate(this.bounds.iterator, (pos) => {
       this.set(pos.x, pos.y, generator(pos));
-    } while (it.moveNext());
+    });
   }
 
   get iterator() {

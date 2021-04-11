@@ -1,3 +1,5 @@
+import { Iterator } from './iterator';
+
 export function clamp(value: number, left: number, right: number) {
   if (value < left) {
     return left;
@@ -39,4 +41,10 @@ export function fillArray(array: any[], start: number, end: number, value: any) 
   for (let index = start; index <= end; index++) {
     array[index] = value;
   }
+}
+
+export function iterate<T>(iterator: Iterator<T>, fn: (element: T) => void) {
+  do {
+    fn(iterator.current());
+  } while (iterator.moveNext());
 }
