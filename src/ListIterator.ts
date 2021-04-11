@@ -14,6 +14,6 @@ export class ListIterator<T> implements Iterator<T> {
   }
   moveNext(): boolean {
     this.index++;
-    return this.index >= this._list.length;
+    return this.index < this._list.length;
   }
 }
