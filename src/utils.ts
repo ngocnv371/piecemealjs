@@ -26,3 +26,17 @@ export function radiusSquared(radius: number) {
 
   return radius * radius;
 }
+
+export function createArray(length: number, value: any) {
+  const array: any[] = [];
+  for (let index = 0; index < array.length; index++) {
+    array[index] = value;
+  }
+  return array;
+}
+
+export function fillArray(array: any[], start: number, end: number, value: any) {
+  for (let index = start; index <= end; index++) {
+    array[index] = value;
+  }
+}
