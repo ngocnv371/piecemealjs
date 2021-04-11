@@ -7,3 +7,13 @@ export function clamp(value: number, left: number, right: number) {
   }
   return value;
 }
+
+export function sign(value: number) {
+  if (!value) {
+    return 0;
+  }
+  if (value < 0) {
+    return -1;
+  }
+  return 1;
+}

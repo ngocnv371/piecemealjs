@@ -13,7 +13,7 @@ export class RectIterator implements Iterator<Vec> {
     this._y = rect.y;
   }
 
-  get current() {
+  current(): Vec {
     return new Vec(this._x, this._y);
   }
 
