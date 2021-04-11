@@ -27,4 +27,9 @@ export class Vec extends VecBase {
     }
     return other.x === this.x && other.y === this.y;
   }
+
+  /// Returns `true` if the magnitude of this vector is greater than [other].
+  public isGreaterThan(length: number) {
+      return this.lengthSquared > length * length
+  }
 }
