@@ -1,4 +1,4 @@
-import { Rect } from '../RectV';
+import { Rect } from '../Rect';
 import { Vec } from '../Vec';
 
 test('empty', () => {
@@ -103,9 +103,9 @@ test('toString()', () => {
 test('offset()', () => {
   const rect = new Rect(1, 2, 3, 4);
 
-  expect(rect.offset(5, 6)).toStrictEqual(new Rect(6, 8, 3, 4));
+  expect(rect.offset(5, 6).toString()).toBe(new Rect(6, 8, 3, 4).toString());
 
-  expect(rect.offset(-5, -6)).toStrictEqual(new Rect(-4, -4, 3, 4));
+  expect(rect.offset(-5, -6).toString()).toEqual(new Rect(-4, -4, 3, 4).toString());
 });
 
 // TODO: contains().

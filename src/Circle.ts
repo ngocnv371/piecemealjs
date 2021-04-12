@@ -1,9 +1,7 @@
 import { Vec } from './vec';
-import { IterableBase } from './IterableBase';
 import { radiusSquared } from './utils';
-import { CircleIterator } from './CircleIterator';
 
-export class Circle extends IterableBase<Vec> {
+export class Circle {
   /// The position of the center of the circle.
   readonly center: Vec;
 
@@ -11,7 +9,6 @@ export class Circle extends IterableBase<Vec> {
   readonly radius: number;
 
   constructor(center: Vec, radius: number) {
-    super();
     this.center = center;
     this.radius = radius;
     if (radius < 0) throw Error('The radius cannot be negative.');
@@ -25,14 +22,5 @@ export class Circle extends IterableBase<Vec> {
     }
 
     return leadingEdge;
-  }
-
-  get iterator() {
-    return new CircleIterator(this, false);
-  }
-
-  /// Traces the outside edge of the circle.
-  get edge() {
-    return new CircleIterator(this, true);
   }
 }

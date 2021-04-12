@@ -6,15 +6,14 @@
 ///
 /// Internally, the elements are stored in a single contiguous list in row-major
 
-import { createArray, fillArray, iterate } from './utils';
+import { createArray, fillArray } from './utils';
 
-import { IterableBase } from './IterableBase';
 import { ListIterator } from './ListIterator';
-import { Rect } from './RectV';
+import { Rect } from './Rect';
 import { Vec } from './vec';
 
 /// order.
-export class Array2D<T> implements IterableIterator<T> {
+export class Array2D<T> implements Iterable<T> {
   /// The number of elements in a row of the array.
   get width() {
     return this.bounds.width;
@@ -83,9 +82,9 @@ export class Array2D<T> implements IterableIterator<T> {
   /// Evaluates [generator] on each position in the array and sets the element
   /// at that position to the result.
   generate(generator: (v: Vec) => T) {
-    iterate(this.bounds.iterator, (pos) => {
+    for (const pos of this.bounds) {
       this.set(pos.x, pos.y, generator(pos));
-    });
+    }
   }
 
   [Symbol.iterator]() {

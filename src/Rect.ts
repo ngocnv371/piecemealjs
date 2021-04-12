@@ -1,4 +1,4 @@
-import { RectIterator } from './RectIteratorV';
+import { RectIterator } from './RectIterator';
 import { Vec } from './vec';
 import { clamp } from './utils';
 

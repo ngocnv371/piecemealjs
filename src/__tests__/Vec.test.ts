@@ -1,4 +1,4 @@
-import { Direction } from '../DirectionV';
+import { Direction } from '../Direction';
 import { Vec } from '../vec';
 
 test('zero', () => {
