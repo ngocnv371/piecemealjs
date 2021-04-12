@@ -23,6 +23,12 @@ export class RectIterator implements IterableIterator<Vec> {
         this._x = this._rect.x;
         this._y++;
       }
+      if (this._y >= this._rect.bottom) {
+        return {
+          done: true,
+          value: null,
+        };
+      }
       return {
         done: false,
         value: new Vec(this._x, this._y),
