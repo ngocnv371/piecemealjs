@@ -7,3 +7,4 @@ export * from './Direction';
 export * from './array2d';
 export * from './ListIterator';
 export * from './RectIterator';
+export * from './Rng';
