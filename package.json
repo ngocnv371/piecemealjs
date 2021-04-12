@@ -1,6 +1,6 @@
 {
   "name": "piecemealjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple math stuff here for possibly gamedev or something. Ported from munificent/piecemeal (dart).",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
