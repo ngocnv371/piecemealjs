@@ -169,7 +169,7 @@ test('fill()', () => {
 test('generate()', () => {
   const array = new Array2D(3, 2, -1);
   array.generate((pos) => pos.x * 100 + pos.y);
-  expect(array).toBe('')
+
   expect(array.get(0, 0)).toStrictEqual(0);
   expect(array.get(1, 0)).toStrictEqual(100);
   expect(array.get(2, 0)).toStrictEqual(200);
