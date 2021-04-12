@@ -43,10 +43,10 @@ export class Rng {
   /**
    *  Gets a random floating-povalue within the given range.
    */
-  float(minOrMax: number, max?: number) {
-    if (minOrMax === null) {
+  float(minOrMax?: number, max?: number) {
+    if (minOrMax === undefined) {
       return random();
-    } else if (max == null) {
+    } else if (max === undefined) {
       return random() * minOrMax;
     } else {
       return random() * (max - minOrMax) + minOrMax;
