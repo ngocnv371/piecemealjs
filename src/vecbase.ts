@@ -114,20 +114,66 @@ export class VecBase {
     }
   }
 
-  public add(other: VecBase) {
-    return new Vec(this.x + other.x, this.y + other.y);
+  public add(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return new Vec(this.x + other.x, this.y + other.y);
+    }
+    return new Vec(this.x + other, this.y + other);
   }
-  public subtract(other: VecBase) {
-    return new Vec(this.x - other.x, this.y - other.y);
+  public subtract(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return new Vec(this.x - other.x, this.y - other.y);
+    }
+    return new Vec(this.x - other, this.y - other);
   }
-  public multiply(other: VecBase) {
-    return new Vec(this.x * other.x, this.y * other.y);
+  public multiply(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return new Vec(this.x * other.x, this.y * other.y);
+    }
+    return new Vec(this.x * other, this.y * other);
   }
-  public divide(other: VecBase) {
-    return new Vec(this.x / other.x, this.y / other.y);
+  public divide(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return new Vec(this.x / other.x, this.y / other.y);
+    }
+    return new Vec(this.x / other, this.y / other);
   }
   public floor() {
     return new Vec(Math.floor(this.x), Math.floor(this.y));
+  }
+
+  public isEqual(other: VecBase) {
+    if (!other) {
+      return false;
+    }
+    return other.x === this.x && other.y === this.y;
+  }
+
+  /// Returns `true` if the magnitude of this vector is greater than [other].
+  public isGreaterThan(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return this.lengthSquared > other.lengthSquared
+    }
+    return this.lengthSquared > other * other
+  }
+  public isGreaterThanOrEqual(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return this.lengthSquared >= other.lengthSquared
+    }
+    return this.lengthSquared >= other * other
+  }
+
+  public isLessThan(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return this.lengthSquared < other.lengthSquared
+    }
+    return this.lengthSquared < other * other
+  }
+  public isLessThanOrEqual(other: VecBase | number) {
+    if (other instanceof VecBase) {
+      return this.lengthSquared <= other.lengthSquared
+    }
+    return this.lengthSquared <= other * other
   }
 
   /// The eight Vecs surrounding this one to the north, south, east, and west

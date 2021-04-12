@@ -20,16 +20,4 @@ export class Vec extends VecBase {
   constructor(x: number, y: number) {
     super(x, y);
   }
-
-  public isEquals(other: any) {
-    if (!other) {
-      return false;
-    }
-    return other.x === this.x && other.y === this.y;
-  }
-
-  /// Returns `true` if the magnitude of this vector is greater than [other].
-  public isGreaterThan(length: number) {
-      return this.lengthSquared > length * length
-  }
 }
