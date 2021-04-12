@@ -36,7 +36,7 @@ import { clamp } from './utils';
 /// example, the width of this rect, determined by subtracting the left
 /// coordinate (-1) from the right (3) is 4 and indeed it contains four columns
 /// of points.
-export class Rect {
+export class Rect implements Iterable<Vec> {
   /// Gets the empty rectangle.
   static empty = Rect.posAndSize(Vec.zero, Vec.zero);
 
@@ -184,7 +184,7 @@ export class Rect {
     return new Vec(x, y);
   }
 
-  public get iterator() {
+  [Symbol.iterator]() {
     return new RectIterator(this);
   }
 

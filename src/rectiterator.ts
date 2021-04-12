@@ -1,8 +1,7 @@
-import { Iterator } from './iterator';
 import { Rect } from './rect';
 import { Vec } from './vec';
 
-export class RectIterator implements Iterator<Vec> {
+export class RectIterator implements IterableIterator<Vec> {
   private _rect: Rect;
   private _x;
   private _y;
@@ -13,17 +12,26 @@ export class RectIterator implements Iterator<Vec> {
     this._y = rect.y;
   }
 
-  current(): Vec {
-    return new Vec(this._x, this._y);
+  [Symbol.iterator](): IterableIterator<Vec> {
+    return this;
   }
 
-  moveNext() {
-    this._x++;
-    if (this._x >= this._rect.right) {
-      this._x = this._rect.x;
-      this._y++;
+  next(): IteratorResult<Vec> {
+    if (this._y < this._rect.bottom) {
+      this._x++;
+      if (this._x >= this._rect.right) {
+        this._x = this._rect.x;
+        this._y++;
+      }
+      return {
+        done: false,
+        value: new Vec(this._x, this._y),
+      };
+    } else {
+      return {
+        done: true,
+        value: null,
+      };
     }
-
-    return this._y < this._rect.bottom;
   }
 }
