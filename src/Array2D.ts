@@ -6,14 +6,15 @@
 ///
 /// Internally, the elements are stored in a single contiguous list in row-major
 
+import { createArray, fillArray, iterate } from './utils';
+
 import { IterableBase } from './IterableBase';
 import { ListIterator } from './ListIterator';
-import { Rect } from './rect';
-import { createArray, fillArray, iterate } from './utils';
+import { Rect } from './RectV';
 import { Vec } from './vec';
 
 /// order.
-export class Array2D<T> extends IterableBase<T> {
+export class Array2D<T> implements IterableIterator<T> {
   /// The number of elements in a row of the array.
   get width() {
     return this.bounds.width;
@@ -29,7 +30,6 @@ export class Array2D<T> extends IterableBase<T> {
   /// Creates a new array with [width], [height] elements initialized to
   /// [value].
   constructor(width: number, height: number, valueOrGenerator: T | ((v: Vec) => T)) {
-    super();
     this.bounds = new Rect(0, 0, width, height);
     if (valueOrGenerator instanceof Function) {
       this._elements = width * height > 0 ? createArray(width * height, valueOrGenerator(Vec.zero)) : [];
@@ -88,7 +88,7 @@ export class Array2D<T> extends IterableBase<T> {
     });
   }
 
-  get iterator() {
+  [Symbol.iterator]() {
     return new ListIterator(this._elements);
   }
 

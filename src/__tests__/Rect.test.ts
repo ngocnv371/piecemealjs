@@ -1,4 +1,4 @@
-import { Rect } from '../rect';
+import { Rect } from '../RectV';
 import { Vec } from '../Vec';
 
 test('empty', () => {
