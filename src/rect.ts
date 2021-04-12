@@ -1,7 +1,6 @@
 import { RectIterator } from './rectiterator';
-import { clamp } from './utils';
 import { Vec } from './vec';
-import { VecBase } from './vecbase';
+import { clamp } from './utils';
 
 /// A two-dimensional immutable rectangle with integer coordinates.
 ///
@@ -159,7 +158,7 @@ export class Rect {
     return new Rect(this.x + x, this.y + y, this.width, this.height);
   }
 
-  public contains(object: VecBase) {
+  public contains(object: Vec) {
     if (object.x < this.pos.x) return false;
     if (object.x >= this.pos.x + this.size.x) return false;
     if (object.y < this.pos.y) return false;

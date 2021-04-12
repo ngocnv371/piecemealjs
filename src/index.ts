@@ -1,6 +1,5 @@
 export * from './rect';
-export * from './vecbase';
-export * from './vec';
+export * from './Vec';
 export * from './line';
 export * from './circle';
 export * from './utils';
