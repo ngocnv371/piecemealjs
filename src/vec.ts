@@ -18,16 +18,7 @@ export class Vec {
   public static readonly w = new Vec(-1, 0);
   public static readonly nw = new Vec(-1, -1);
   /// The eight cardinal and intercardinal Vecs.
-  public static readonly all = [
-    Vec.n,
-    Vec.ne,
-    Vec.e,
-    Vec.se,
-    Vec.s,
-    Vec.sw,
-    Vec.w,
-    Vec.nw,
-  ];
+  public static readonly all = [Vec.n, Vec.ne, Vec.e, Vec.se, Vec.s, Vec.sw, Vec.w, Vec.nw];
   /// The four cardinal Vecs: north, south, east, and west.
   public static readonly cardinal = [Vec.n, Vec.e, Vec.s, Vec.w];
   /// The four Vecs between the cardinal ones: northwest, northeast,
@@ -187,28 +178,28 @@ export class Vec {
   /// Returns `true` if the magnitude of this vector is greater than [other].
   public isGreaterThan(other: Vec | number) {
     if (other instanceof Vec) {
-      return this.lengthSquared > other.lengthSquared
+      return this.lengthSquared > other.lengthSquared;
     }
-    return this.lengthSquared > other * other
+    return this.lengthSquared > other * other;
   }
   public isGreaterThanOrEqual(other: Vec | number) {
     if (other instanceof Vec) {
-      return this.lengthSquared >= other.lengthSquared
+      return this.lengthSquared >= other.lengthSquared;
     }
-    return this.lengthSquared >= other * other
+    return this.lengthSquared >= other * other;
   }
 
   public isLessThan(other: Vec | number) {
     if (other instanceof Vec) {
-      return this.lengthSquared < other.lengthSquared
+      return this.lengthSquared < other.lengthSquared;
     }
-    return this.lengthSquared < other * other
+    return this.lengthSquared < other * other;
   }
   public isLessThanOrEqual(other: Vec | number) {
     if (other instanceof Vec) {
-      return this.lengthSquared <= other.lengthSquared
+      return this.lengthSquared <= other.lengthSquared;
     }
-    return this.lengthSquared <= other * other
+    return this.lengthSquared <= other * other;
   }
 
   /// The eight Vecs surrounding this one to the north, south, east, and west
@@ -272,5 +263,125 @@ export class Vec {
 
   public toString() {
     return `${this.x}, ${this.y}`;
+  }
+
+  public get rotateLeft45(): Vec {
+    switch (this.toString()) {
+      case Vec.none.toString():
+        return Vec.none;
+      case Vec.n.toString():
+        return Vec.nw;
+      case Vec.ne.toString():
+        return Vec.n;
+      case Vec.e.toString():
+        return Vec.ne;
+      case Vec.se.toString():
+        return Vec.e;
+      case Vec.s.toString():
+        return Vec.se;
+      case Vec.sw.toString():
+        return Vec.s;
+      case Vec.w.toString():
+        return Vec.sw;
+      case Vec.nw.toString():
+        return Vec.w;
+    }
+    return Vec.none;
+  }
+
+  public get rotateRight45(): Vec {
+    switch (this.toString()) {
+      case Vec.none.toString():
+        return Vec.none;
+      case Vec.n.toString():
+        return Vec.ne;
+      case Vec.ne.toString():
+        return Vec.e;
+      case Vec.e.toString():
+        return Vec.se;
+      case Vec.se.toString():
+        return Vec.s;
+      case Vec.s.toString():
+        return Vec.sw;
+      case Vec.sw.toString():
+        return Vec.w;
+      case Vec.w.toString():
+        return Vec.nw;
+      case Vec.nw.toString():
+        return Vec.n;
+    }
+    return Vec.none;
+  }
+
+  public get rotateLeft90(): Vec {
+    switch (this.toString()) {
+      case Vec.none.toString():
+        return Vec.none;
+      case Vec.n.toString():
+        return Vec.w;
+      case Vec.ne.toString():
+        return Vec.nw;
+      case Vec.e.toString():
+        return Vec.n;
+      case Vec.se.toString():
+        return Vec.ne;
+      case Vec.s.toString():
+        return Vec.e;
+      case Vec.sw.toString():
+        return Vec.se;
+      case Vec.w.toString():
+        return Vec.s;
+      case Vec.nw.toString():
+        return Vec.sw;
+    }
+    return Vec.none;
+  }
+
+  public get rotateRight90(): Vec {
+    switch (this.toString()) {
+      case Vec.none.toString():
+        return Vec.none;
+      case Vec.n.toString():
+        return Vec.e;
+      case Vec.ne.toString():
+        return Vec.se;
+      case Vec.e.toString():
+        return Vec.s;
+      case Vec.se.toString():
+        return Vec.sw;
+      case Vec.s.toString():
+        return Vec.w;
+      case Vec.sw.toString():
+        return Vec.nw;
+      case Vec.w.toString():
+        return Vec.n;
+      case Vec.nw.toString():
+        return Vec.ne;
+    }
+    return Vec.none;
+  }
+
+  public get rotate180(): Vec {
+    switch (this.toString()) {
+      case Vec.none.toString():
+        return Vec.none;
+      case Vec.n.toString():
+        return Vec.s;
+      case Vec.ne.toString():
+        return Vec.sw;
+      case Vec.e.toString():
+        return Vec.w;
+      case Vec.se.toString():
+        return Vec.nw;
+      case Vec.s.toString():
+        return Vec.n;
+      case Vec.sw.toString():
+        return Vec.ne;
+      case Vec.w.toString():
+        return Vec.e;
+      case Vec.nw.toString():
+        return Vec.se;
+    }
+    return Vec.none;
   }
 }

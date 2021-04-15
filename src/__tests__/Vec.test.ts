@@ -290,3 +290,8 @@ test('equality', () => {
   expect(new Vec(1, 1).isEqual(Direction.se)).toBe(true);
   expect(new Vec(2, 1).isEqual(Direction.se)).toBe(false);
 });
+
+test('rotateLeft45', () => {
+  expect(Vec.s.rotateLeft45).toBe(Vec.se);
+  expect(new Vec(Vec.s.x, Vec.s.y).rotateLeft45.toString()).toBe(new Vec(Vec.se.x, Vec.se.y).toString());
+})
